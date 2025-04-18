@@ -4,679 +4,769 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVIATOR BET MASTER</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff4e50;
-            --dark: #121212;
-            --darker: #0a0a0a;
-            --light: #e0e0e0;
-            --gray: #333333;
+            --primary: #FF3E00;
+            --secondary: #2B2D42;
+            --dark: #1A1A2E;
+            --darker: #121225;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --success: #28A745;
         }
         
         body {
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--darker);
             color: var(--light);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
         
-        .navbar {
-            background-color: rgba(10, 10, 10, 0.95);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        .aviator-container {
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
         }
         
         .logo-container {
-            max-width: 280px;
-            margin: 0 auto;
+            padding: 20px 0;
+            background-color: var(--dark);
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
         }
         
-        .logo-image {
-            width: 100%;
+        .logo {
+            max-width: 80%;
             height: auto;
-            margin-bottom: 1rem;
         }
         
-        .main-container {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            padding: 2rem;
-            margin-top: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .custom-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            padding: 12px 20px;
-            font-weight: 600;
-            margin: 10px 0;
-            transition: all 0.3s ease;
-            text-align: left;
-            display: flex;
-            align-items: center;
-        }
-        
-        .custom-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(106, 17, 203, 0.4);
-            color: white;
-        }
-        
-        .custom-btn i {
-            margin-right: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .btn-section {
-            padding: 1.5rem;
-            background-color: var(--dark);
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .link-highlight {
-            background-color: rgba(255, 78, 80, 0.1);
-            border-left: 4px solid var(--accent);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .link-highlight a {
-            color: var(--accent);
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .link-highlight a:hover {
-            text-decoration: underline;
-        }
-
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .profile-form .form-label {
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
             color: var(--light);
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 62, 0, 0.7);
         }
         
-        .profile-form .form-control, .profile-form .form-select {
-            background-color: var(--gray);
-            border: 1px solid #444;
-            color: white;
-            border-radius: 8px;
-        }
-        
-        .result-card {
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.2) 0%, rgba(37, 117, 252, 0.2) 100%);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .highlight-text {
-            color: var(--secondary);
-            font-weight: bold;
-        }
-        
-        .contact-card {
-            background-color: var(--dark);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-card i {
-            font-size: 2rem;
-            margin-right: 15px;
+        .logo-text span {
             color: var(--primary);
         }
         
-        .footer {
-            background-color: var(--darker);
+        .content-section {
             padding: 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 2rem;
+            margin-bottom: 20px;
         }
-
-        /* Responsivo para mobile */
-        @media (max-width: 768px) {
-            .custom-btn {
-                padding: 10px 15px;
+        
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-message h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .welcome-message p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-custom {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 10px 0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-custom:hover {
+            background-color: #FF5722;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 62, 0, 0.3);
+        }
+        
+        .btn-custom i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .btn-custom::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-custom:hover::after {
+            left: 100%;
+        }
+        
+        .section {
+            background-color: var(--dark);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        
+        .section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 22px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        
+        .link-box {
+            background-color: rgba(255, 62, 0, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .link-box p {
+            margin-bottom: 10px;
+        }
+        
+        .link-box a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        .link-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .bonus-info {
+            background-color: rgba(40, 167, 69, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            background-color: #2F3142;
+            border: 1px solid #3B3E56;
+            color: var(--light);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .form-control:focus {
+            background-color: #373A52;
+            color: var(--light);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(255, 62, 0, 0.25);
+        }
+        
+        .profile-result {
+            background-color: rgba(255, 62, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .profile-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .profile-description {
+            margin-bottom: 20px;
+        }
+        
+        .recommendations {
+            background-color: rgba(43, 45, 66, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .recommendations h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .recommendations ul {
+            padding-left: 20px;
+        }
+        
+        .recommendations li {
+            margin-bottom: 8px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            font-size: 24px;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .contact-item a {
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+        
+        .btn-play {
+            background-color: var(--success);
+            font-weight: 700;
+            font-size: 18px;
+            padding: 15px 25px;
+            margin-top: 20px;
+        }
+        
+        .btn-play:hover {
+            background-color: #218838;
+        }
+        
+        .btn-back {
+            background-color: transparent;
+            border: 1px solid var(--gray);
+            color: var(--light);
+            margin-top: 20px;
+            display: inline-block;
+        }
+        
+        .btn-back:hover {
+            background-color: rgba(108, 117, 125, 0.2);
+            color: var(--light);
+        }
+        
+        .page-active {
+            display: block;
+        }
+        
+        .flying-plane {
+            position: relative;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .plane-icon {
+            font-size: 36px;
+            color: var(--primary);
+            animation: fly 3s infinite;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateY(0) rotate(45deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(45deg);
+            }
+            100% {
+                transform: translateY(0) rotate(45deg);
+            }
+        }
+        
+        .loading-bar {
+            width: 100%;
+            height: 5px;
+            background-color: rgba(255, 62, 0, 0.3);
+            margin-top: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary);
+            animation: loading 2s forwards;
+        }
+        
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .aviator-container {
+                max-width: 500px;
+                padding: 0 15px;
             }
             
-            .custom-btn i {
-                font-size: 1.2rem;
-                margin-right: 10px;
+            .logo-text {
+                font-size: 32px;
             }
             
-            .main-container {
-                padding: 1rem;
-            }
-            
-            .btn-section {
-                padding: 1rem;
+            .btn-custom {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand mx-auto" href="#" onclick="showSection('home')">
-                <div class="logo-container">
-                    <img src="logo.jpg" alt="Aviator Bet Master Logo" class="logo-image">
-                </div>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="main-container">
-            
-            <!-- Home Section -->
-            <div id="home" class="content-section" style="display: block;">
-                <div class="text-center mb-4">
-                    <h1 class="display-5 fw-bold mb-4">Bem-vindo ao AVIATOR BET MASTER</h1>
-                    <p class="lead mb-5">Sua plataforma especializada para maximizar seus ganhos no jogo Aviator. Descubra estratégias, aproveite bônus exclusivos e analise seu perfil de jogador.</p>
-                </div>
-                
-                <div class="btn-section">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn custom-btn w-100" onclick="showSection('bestBetting')">
-                                <i class="bi bi-rocket-takeoff"></i>
-                                Entrar na Melhor Casa de Apostas
-                            </button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn custom-btn w-100" onclick="showSection('bonusInfo')">
-                                <i class="bi bi-cash-coin"></i>
-                                Como Funciona o Bônus de 100%
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <button class="btn custom-btn w-100" onclick="showSection('profileAnalysis')">
-                                <i class="bi bi-person-badge"></i>
-                                Análise de Perfil Aviator
-                            </button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn custom-btn w-100" onclick="showSection('help')">
-                                <i class="bi bi-question-circle"></i>
-                                Ajuda
-                            </button>
-                        </div>
-                    </div>
+    <div class="aviator-container">
+        <header class="logo-container">
+            <h1 class="logo-text"><span>AVIATOR</span> BET MASTER</h1>
+            <div class="flying-plane">
+                <i class="bi bi-airplane-fill plane-icon"></i>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
                 </div>
             </div>
-            
-            <!-- Best Betting House Section -->
-            <div id="bestBetting" class="content-section">
-                <div class="d-flex align-items-center mb-4">
-                    <button class="btn btn-sm btn-outline-light me-3" onclick="showSection('home')">
-                        <i class="bi bi-arrow-left"></i> Voltar
-                    </button>
-                    <h2 class="mb-0">Entrar na Melhor Casa de Apostas</h2>
+        </header>
+        
+        <main>
+            <!-- Página Inicial -->
+            <section id="home" class="content-section page-active">
+                <div class="welcome-message">
+                    <h1>Bem-vindo ao AVIATOR BET MASTER</h1>
+                    <p>Seu guia completo para apostas no Aviator com bônus exclusivo de 100%</p>
                 </div>
                 
-                <div class="link-highlight">
-                    <p class="mb-2"><i class="bi bi-link-45deg"></i> <strong>Link para criar sua conta e ativar o bônus:</strong></p>
-                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="d-flex align-items-center">
-                        <i class="bi bi-box-arrow-up-right me-2"></i>
+                <button class="btn btn-custom" id="btnCasaApostas">
+                    <i class="bi bi-trophy-fill"></i> Entrar na Melhor Casa de Apostas
+                </button>
+                
+                <button class="btn btn-custom" id="btnBonus">
+                    <i class="bi bi-cash-coin"></i> Como Funciona o Bônus de 100%
+                </button>
+                
+                <button class="btn btn-custom" id="btnAnalise">
+                    <i class="bi bi-graph-up"></i> Análise de Perfil Aviator
+                </button>
+                
+                <button class="btn btn-custom" id="btnAjuda">
+                    <i class="bi bi-question-circle-fill"></i> Ajuda
+                </button>
+            </section>
+            
+            <!-- Entrar na Melhor Casa de Apostas -->
+            <section id="casaApostas" class="section">
+                <h2>Melhor Casa de Apostas</h2>
+                
+                <p>Registre-se agora e receba um bônus exclusivo de 100% no seu primeiro depósito!</p>
+                
+                <div class="link-box">
+                    <p><i class="bi bi-link-45deg"></i> Link para criar sua conta e ativar o bônus:</p>
+                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank">
                         https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=
                     </a>
                 </div>
                 
-                <div class="card bg-dark text-light p-4 mt-4">
-                    <div class="card-body">
-                        <h4 class="card-title"><i class="bi bi-gift text-primary"></i> Bônus de 100% no Primeiro Depósito</h4>
-                        <p class="card-text">Ao fazer seu primeiro depósito através do link acima, você recebe um bônus de 100% do valor depositado.</p>
-                        
-                        <div class="bg-secondary bg-opacity-25 p-3 rounded mt-3">
-                            <h5>Exemplo:</h5>
-                            <ul>
-                                <li>Você deposita: <span class="highlight-text">200 MT</span></li>
-                                <li>Recebe de bônus: <span class="highlight-text">+200 MT</span></li>
-                                <li>Total para apostar: <span class="highlight-text">400 MT</span></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <p><i class="bi bi-exclamation-triangle text-warning"></i> <strong>Importante:</strong> O bônus só será ativado se o cadastro for feito através do link oficial acima.</p>
-                        </div>
-                    </div>
+                <div class="bonus-info">
+                    <h4><i class="bi bi-gift"></i> Bônus de 100% no primeiro depósito</h4>
+                    <p>Exemplo: Deposite 200MT, ganhe 200MT extra (total: 400MT)</p>
+                    <p class="text-warning"><i class="bi bi-exclamation-triangle"></i> O bônus só é válido ao se cadastrar pelo link acima.</p>
                 </div>
                 
-                <div class="text-center mt-4">
-                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="btn btn-lg custom-btn">
-                        <i class="bi bi-rocket-takeoff"></i> Criar Minha Conta Agora
+                <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="btn btn-custom btn-play">
+                    <i class="bi bi-play-circle-fill"></i> Começar a Jogar Agora
+                </a>
+                
+                <button class="btn btn-back" onclick="showHome()">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </button>
+            </section>
+            
+            <!-- Como Funciona o Bônus de 100% -->
+            <section id="bonus" class="section">
+                <h2>Como Funciona o Bônus de 100%</h2>
+                
+                <div class="bonus-info">
+                    <h4><i class="bi bi-info-circle"></i> Informações Importantes</h4>
+                    <ul>
+                        <li>O bônus só é válido no primeiro depósito e usando o link fornecido</li>
+                        <li>O valor mínimo para depósito é 200MT</li>
+                        <li>O bônus é creditado automaticamente na sua conta</li>
+                        <li>Você poderá usar o valor do bônus para apostar no Aviator</li>
+                    </ul>
+                </div>
+                
+                <div class="link-box">
+                    <p><i class="bi bi-link-45deg"></i> Link para ativar seu bônus:</p>
+                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank">
+                        https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=
                     </a>
                 </div>
-            </div>
+                
+                <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="btn btn-custom btn-play">
+                    <i class="bi bi-play-circle-fill"></i> Ativar Meu Bônus Agora
+                </a>
+                
+                <button class="btn btn-back" onclick="showHome()">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </button>
+            </section>
             
-            <!-- Bonus Info Section -->
-            <div id="bonusInfo" class="content-section">
-                <div class="d-flex align-items-center mb-4">
-                    <button class="btn btn-sm btn-outline-light me-3" onclick="showSection('home')">
-                        <i class="bi bi-arrow-left"></i> Voltar
+            <!-- Análise de Perfil do Jogador Aviator -->
+            <section id="analise" class="section">
+                <h2>Análise de Perfil do Jogador</h2>
+                
+                <p>Responda às perguntas abaixo para descobrir seu perfil como jogador de Aviator e receber recomendações personalizadas.</p>
+                
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label class="form-label">1. Quanto tempo você joga Aviator por dia?</label>
+                        <select class="form-control" id="tempoJogo" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="pouco">Menos de 1 hora</option>
+                            <option value="medio">Entre 1 e 3 horas</option>
+                            <option value="muito">Mais de 3 horas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">2. Qual valor você aposta em média por rodada?</label>
+                        <select class="form-control" id="valorAposta" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="baixo">Menos de 50MT</option>
+                            <option value="medio">Entre 50MT e 200MT</option>
+                            <option value="alto">Mais de 200MT</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">3. Você costuma sacar seus lucros ou reinvestir?</label>
+                        <select class="form-control" id="saqueReinveste" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="saca">Geralmente saco os lucros</option>
+                            <option value="misto">Um pouco de cada</option>
+                            <option value="reinveste">Geralmente reinvisto</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">4. Quando você costuma parar de jogar?</label>
+                        <select class="form-control" id="momentoParada" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="prejuizo">Quando tenho algum prejuízo</option>
+                            <option value="tempo">Depois de um tempo determinado</option>
+                            <option value="lucro">Quando atinjo um lucro específico</option>
+                            <option value="nunca">Geralmente não tenho critério para parar</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">5. Você costuma usar estratégias?</label>
+                        <select class="form-control" id="usaEstrategia" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="nunca">Nunca uso estratégias</option>
+                            <option value="vezes">Às vezes uso estratégias simples</option>
+                            <option value="sempre">Sempre uso estratégias definidas</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-custom">
+                        <i class="bi bi-person-check-fill"></i> Analisar Meu Perfil
                     </button>
-                    <h2 class="mb-0">Como Funciona o Bônus de 100%</h2>
-                </div>
+                </form>
                 
-                <div class="card bg-dark text-light mb-4">
-                    <div class="card-body">
-                        <h4 class="mb-3"><i class="bi bi-info-circle text-primary me-2"></i>Regras do Bônus</h4>
-                        
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="bi bi-check-circle-fill text-success me-3 mt-1" style="font-size: 1.2rem;"></i>
-                            <div>
-                                <h5>Válido Apenas no Primeiro Depósito</h5>
-                                <p>O bônus de 100% é aplicado apenas no seu primeiro depósito na plataforma. Depósitos subsequentes não receberão este bônus.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="bi bi-check-circle-fill text-success me-3 mt-1" style="font-size: 1.2rem;"></i>
-                            <div>
-                                <h5>Link Oficial Obrigatório</h5>
-                                <p>É necessário realizar o cadastro através do nosso link oficial para garantir a ativação do bônus:</p>
-                                <div class="bg-dark p-2 rounded">
-                                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="text-primary">
-                                        https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="bi bi-check-circle-fill text-success me-3 mt-1" style="font-size: 1.2rem;"></i>
-                            <div>
-                                <h5>Valor Mínimo de Depósito</h5>
-                                <p>O valor mínimo para depósito e qualificação para o bônus é de <strong>200 MT</strong>.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="bi bi-check-circle-fill text-success me-3 mt-1" style="font-size: 1.2rem;"></i>
-                            <div>
-                                <h5>Crédito Automático</h5>
-                                <p>O valor do bônus é creditado automaticamente na sua conta após a confirmação do seu primeiro depósito.</p>
-                            </div>
-                        </div>
+                <div id="profileResult" class="profile-result">
+                    <h3 class="profile-title">Seu Perfil de Jogador: <span id="profileType"></span></h3>
+                    
+                    <p class="profile-description" id="profileDescription"></p>
+                    
+                    <div class="recommendations">
+                        <h4><i class="bi bi-lightbulb-fill"></i> Recomendações:</h4>
+                        <ul id="recommendations"></ul>
                     </div>
-                </div>
-                
-                <div class="alert alert-primary bg-primary bg-opacity-25 border-primary">
-                    <div class="d-flex">
-                        <i class="bi bi-lightbulb me-3" style="font-size: 1.5rem;"></i>
-                        <div>
-                            <h5>Dica importante</h5>
-                            <p class="mb-0">Considere depositar um valor que seja confortável para você, mas lembre-se que quanto maior o depósito inicial, maior será o bônus que você receberá.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-4">
-                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="btn btn-lg custom-btn">
-                        <i class="bi bi-rocket-takeoff"></i> Ativar Meu Bônus Agora
+                    
+                    <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="btn btn-custom btn-play">
+                        <i class="bi bi-play-circle-fill"></i> Começar a Jogar Agora
                     </a>
                 </div>
-            </div>
+                
+                <button class="btn btn-back" onclick="showHome()">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </button>
+            </section>
             
-            <!-- Profile Analysis Section -->
-            <div id="profileAnalysis" class="content-section">
-                <div class="d-flex align-items-center mb-4">
-                    <button class="btn btn-sm btn-outline-light me-3" onclick="showSection('home')">
-                        <i class="bi bi-arrow-left"></i> Voltar
-                    </button>
-                    <h2 class="mb-0">Análise de Perfil do Jogador Aviator</h2>
+            <!-- Ajuda -->
+            <section id="ajuda" class="section">
+                <h2>Ajuda e Suporte</h2>
+                
+                <p>Tem dúvidas ou precisa de assistência? Entre em contato pelos canais abaixo:</p>
+                
+                <div class="contact-item">
+                    <i class="bi bi-whatsapp"></i>
+                    <a href="https://wa.me/258879038047" target="_blank">+258 87 903 8047</a>
                 </div>
                 
-                <div class="card bg-dark text-light mb-4">
-                    <div class="card-body">
-                        <h4 class="mb-4"><i class="bi bi-graph-up text-primary me-2"></i>Descubra seu Perfil de Jogador</h4>
-                        <p>Responda às perguntas abaixo para receber uma análise personalizada do seu perfil como jogador de Aviator, junto com recomendações para melhorar seus resultados.</p>
-                        
-                        <form id="profileForm" class="profile-form mt-4">
-                            <div class="mb-3">
-                                <label for="playTime" class="form-label">Quanto tempo você joga Aviator por dia?</label>
-                                <select class="form-select" id="playTime" required>
-                                    <option value="" selected disabled>Selecione uma opção</option>
-                                    <option value="1">Menos de 30 minutos</option>
-                                    <option value="2">Entre 30 minutos e 1 hora</option>
-                                    <option value="3">Entre 1 e 3 horas</option>
-                                    <option value="4">Mais de 3 horas</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="betValue" class="form-label">Qual valor você aposta em média por rodada?</label>
-                                <select class="form-select" id="betValue" required>
-                                    <option value="" selected disabled>Selecione uma opção</option>
-                                    <option value="1">Menos de 50 MT</option>
-                                    <option value="2">Entre 50 MT e 200 MT</option>
-                                    <option value="3">Entre 200 MT e 500 MT</option>
-                                    <option value="4">Mais de 500 MT</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="withdrawHabit" class="form-label">Você costuma sacar seus lucros ou reinvestir?</label>
-                                <select class="form-select" id="withdrawHabit" required>
-                                    <option value="" selected disabled>Selecione uma opção</option>
-                                    <option value="1">Saco frequentemente quando tenho lucro</option>
-                                    <option value="2">Saco apenas uma parte e reinvisto o resto</option>
-                                    <option value="3">Geralmente reinvisto tudo</option>
-                                    <option value="4">Nunca saquei ainda</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="stopPlaying" class="form-label">Quando você costuma parar de jogar?</label>
-                                <select class="form-select" id="stopPlaying" required>
-                                    <option value="" selected disabled>Selecione uma opção</option>
-                                    <option value="1">Quando atinjo um objetivo de ganho definido</option>
-                                    <option value="2">Quando perco um valor específico</option>
-                                    <option value="3">Jogo por um tempo determinado, independente do resultado</option>
-                                    <option value="4">Geralmente jogo até perder tudo ou me cansar</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label for="useStrategy" class="form-label">Você costuma usar estratégias?</label>
-                                <select class="form-select" id="useStrategy" required>
-                                    <option value="" selected disabled>Selecione uma opção</option>
-                                    <option value="1">Sim, tenho uma estratégia definida que sempre sigo</option>
-                                    <option value="2">Uso algumas estratégias, mas adapto conforme o jogo</option>
-                                    <option value="3">Raramente uso estratégias</option>
-                                    <option value="4">Não uso estratégia, jogo por intuição</option>
-                                </select>
-                            </div>
-                            
-                            <div class="text-center">
-                                <button type="submit" class="btn custom-btn">
-                                    <i class="bi bi-search"></i> Analisar Meu Perfil
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="contact-item">
+                    <i class="bi bi-telegram"></i>
+                    <a href="https://t.me/Aviatorolabet" target="_blank">@Aviatorolabet</a>
                 </div>
                 
-                <!-- Result Section (Initially Hidden) -->
-                <div id="profileResult" class="result-card" style="display: none;">
-                    <div class="text-center mb-4">
-                        <i class="bi bi-person-check" style="font-size: 3rem; color: var(--primary);"></i>
-                        <h3 class="mt-3">Seu Perfil de Jogador:</h3>
-                        <h4 id="profileType" class="text-primary">Jogador Estratégico</h4>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h5><i class="bi bi-info-circle me-2"></i>Características do seu perfil:</h5>
-                        <div id="profileCharacteristics" class="p-3 rounded bg-dark">
-                            <!-- Características serão inseridas via JavaScript -->
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h5><i class="bi bi-lightbulb me-2"></i>Recomendações personalizadas:</h5>
-                        <div id="profileRecommendations" class="p-3 rounded bg-dark">
-                            <!-- Recomendações serão inseridas via JavaScript -->
-                        </div>
-                    </div>
-                    
-                    <div class="text-center mt-4">
-                        <a href="https://tracking.olabet.co.mz/C.ashx?btag=a_1659b_7c_&affid=1616&siteid=1659&adid=7&c=" target="_blank" class="btn btn-lg custom-btn">
-                            <i class="bi bi-rocket-takeoff"></i> Começar a Jogar Agora
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Help Section -->
-            <div id="help" class="content-section">
-                <div class="d-flex align-items-center mb-4">
-                    <button class="btn btn-sm btn-outline-light me-3" onclick="showSection('home')">
-                        <i class="bi bi-arrow-left"></i> Voltar
-                    </button>
-                    <h2 class="mb-0">Ajuda</h2>
+                <div class="bonus-info">
+                    <h4><i class="bi bi-info-circle"></i> Lembre-se</h4>
+                    <p>Para ativar o bônus de 100%, você deve se cadastrar através do nosso link oficial.</p>
                 </div>
                 
-                <div class="card bg-dark text-light mb-4">
-                    <div class="card-body">
-                        <h4 class="mb-4"><i class="bi bi-headset text-primary me-2"></i>Contato de Suporte</h4>
-                        <p>Precisa de ajuda? Entre em contato conosco através dos canais abaixo:</p>
-                        
-                        <div class="contact-card">
-                            <i class="bi bi-whatsapp"></i>
-                            <div>
-                                <h5>WhatsApp</h5>
-                                <p class="m-0">+258 87 903 8047</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-card">
-                            <i class="bi bi-telegram"></i>
-                            <div>
-                                <h5>Telegram</h5>
-                                <p class="m-0">@Aviatorolabet</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card bg-dark text-light">
-                    <div class="card-body">
-                        <h4 class="mb-3"><i class="bi bi-question-circle text-primary me-2"></i>Perguntas Frequentes</h4>
-                        
-                        <div class="accordion" id="faqAccordion">
-                            <div class="accordion-item bg-dark text-light border-secondary">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Como funciona o bônus de 100%?
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        O bônus de 100% é aplicado ao seu primeiro depósito quando você se cadastra através do nosso link oficial. O valor mínimo para depósito é de 200 MT, e o bônus é creditado automaticamente na sua conta após a confirmação do depósito.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="accordion-item bg-dark text-light border-secondary">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        O que é o jogo Aviator?
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Aviator é um jogo de apostas online onde um avião decola e o multiplicador aumenta enquanto ele voa. Você deve sacar seus ganhos antes que o avião desapareça. Se não sacar a tempo, perde a aposta. É um jogo de risco vs. recompensa onde você decide quando garantir seus ganhos.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="accordion-item bg-dark text-light border-secondary">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Quais são as melhores estratégias para o Aviator?
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                                    <div class="accordion-body">
-                                        Algumas estratégias populares incluem: definir um multiplicador alvo (ex: sempre sacar em 1.5x), fazer apostas duplas (uma conservadora e uma arriscada), gerenciar seu bankroll (nunca apostar mais de 5% do seu saldo total), e estabelecer limites de ganhos e perdas diários.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p class="mb-1">© 2025 AVIATOR BET MASTER - Todos os direitos reservados</p>
-                <p class="small text-muted">Este site não é afiliado ao jogo oficial Aviator. Jogue com responsabilidade.</p>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                <button class="btn btn-back" onclick="showHome()">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </button>
+            </section>
+        </main>
+    </div/>
     <script>
-        // Navigation Function
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.style.display = 'none';
+        // Funções para navegação
+        function showHome() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('page-active');
             });
-            
-            // Show the selected section
-            document.getElementById(sectionId).style.display = 'block';
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
+            document.getElementById('home').classList.add('page-active');
         }
         
-        // Profile Analysis Form Submit Handler
+        function showSection(sectionId) {
+            document.querySelectorAll('.section, #home').forEach(section => {
+                section.classList.remove('page-active');
+            });
+            document.getElementById(sectionId).classList.add('page-active');
+        }
+        
+        // Event Listeners
+        document.getElementById('btnCasaApostas').addEventListener('click', () => {
+            showSection('casaApostas');
+        });
+        
+        document.getElementById('btnBonus').addEventListener('click', () => {
+            showSection('bonus');
+        });
+        
+        document.getElementById('btnAnalise').addEventListener('click', () => {
+            showSection('analise');
+        });
+        
+        document.getElementById('btnAjuda').addEventListener('click', () => {
+            showSection('ajuda');
+        });
+        
+        // Análise de perfil
         document.getElementById('profileForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
-            const playTime = parseInt(document.getElementById('playTime').value);
-            const betValue = parseInt(document.getElementById('betValue').value);
-            const withdrawHabit = parseInt(document.getElementById('withdrawHabit').value);
-            const stopPlaying = parseInt(document.getElementById('stopPlaying').value);
-            const useStrategy = parseInt(document.getElementById('useStrategy').value);
+            // Coletar dados
+            const tempoJogo = document.getElementById('tempoJogo').value;
+            const valorAposta = document.getElementById('valorAposta').value;
+            const saqueReinveste = document.getElementById('saqueReinveste').value;
+            const momentoParada = document.getElementById('momentoParada').value;
+            const usaEstrategia = document.getElementById('usaEstrategia').value;
             
-            // Calculate profile type (simple algorithm)
-            const impulsiveScore = (playTime >= 3 ? 2 : 0) + 
-                                  (betValue >= 3 ? 2 : 0) + 
-                                  (withdrawHabit >= 3 ? 3 : 0) + 
-                                  (stopPlaying >= 3 ? 3 : 0) + 
-                                  (useStrategy >= 3 ? 2 : 0);
-                                  
-            const strategicScore = (playTime <= 3 ? 1 : 0) + 
-                                  (betValue <= 3 ? 1 : 0) + 
-                                  (withdrawHabit <= 2 ? 2 : 0) + 
-                                  (stopPlaying <= 2 ? 2 : 0) + 
-                                  (useStrategy <= 2 ? 3 : 0);
-                                  
-            const casualScore = (playTime <= 2 ? 3 : 0) + 
-                               (betValue <= 2 ? 2 : 0) + 
-                               (withdrawHabit <= 2 ? 1 : 0) + 
-                               (stopPlaying === 3 ? 2 : 0) + 
-                               (useStrategy >= 3 ? 1 : 0);
+            // Calcular perfil
+            let perfil = determinarPerfil(tempoJogo, valorAposta, saqueReinveste, momentoParada, usaEstrategia);
             
-            // Determine profile type
-            let profileType, characteristics, recommendations;
+            // Mostrar resultado
+            document.getElementById('profileType').textContent = perfil.tipo;
+            document.getElementById('profileDescription').textContent = perfil.descricao;
             
-            if (impulsiveScore >= strategicScore && impulsiveScore >= casualScore) {
-                profileType = "Jogador Impulsivo";
-                characteristics = `
-                    <ul>
-                        <li>Você tende a jogar por períodos mais longos</li>
-                        <li>Geralmente faz apostas de valor mais alto</li>
-                        <li>Raramente saca seus ganhos, preferindo reinvestir</li>
-                        <li>Joga frequentemente até perder o saldo ou cansar</li>
-                        <li>Confia mais na intuição do que em estratégias definidas</li>
-                    </ul>
-                `;
-                recommendations = `
-                    <ul>
-                        <li>Defina limites de tempo e valores antes de começar a jogar</li>
-                        <li>Estabeleça um objetivo diário de ganhos e perdas e respeite-o</li>
-                        <li>Saque pelo menos 50% dos seus ganhos regularmente</li>
-                        <li>Tente apostar valores menores para prolongar seu tempo de jogo</li>
-                        <li>Experimente usar estratégias simples, como sacar sempre em multiplicadores específicos</li>
-                    </ul>
-                `;
-            } else if (strategicScore >= impulsiveScore && strategicScore >= casualScore) {
-                profileType = "Jogador Estratégico";
-                characteristics = `
-                    <ul>
-                        <li>Você joga de forma planejada e disciplinada</li>
-                        <li>Costuma apostar valores calculados com base no seu saldo</li>
-                        <li>Saca seus ganhos regularmente, evitando reinvestir tudo</li>
-                        <li>Define objetivos claros de quando parar de jogar</li>
-                        <li>Utiliza estratégias consistentes em suas apostas</li>
-                    </ul>
-                `;
-                recommendations = `
-                    <ul>
-                        <li>Continue aprimorando suas estratégias com base nos resultados</li>
-                        <li>Considere manter um registro dos seus jogos para análise</li>
-                        <li>Experimente diferentes estratégias em pequenas apostas para testar eficácia</li>
-                        <li>Não se deixe levar pela emoção após grandes vitórias ou derrotas</li>
-                        <li>Reserve um tempo para estudar padrões do jogo e aperfeiçoar sua abordagem</li>
-                    </ul>
-                `;
-            } else {
-                profileType = "Jogador Casual";
-                characteristics = `
-                    <ul>
-                        <li>Você joga por períodos mais curtos e esporádicos</li>
-                        <li>Prefere fazer apostas de valores menores e conservadores</li>
-                        <li>Pode sacar ganhos com regularidade ou ainda estar aprendendo o jogo</li>
-                        <li>Geralmente joga por um tempo determinado, independente do resultado</li>
-                        <li>Ainda está experimentando diferentes abordagens no jogo</li>
-                    </ul>
-                `;
-                recommendations = `
-                    <ul>
-                        <li>Considere adotar uma estratégia simples para melhorar seus ganhos</li>
-                        <li>Experimente a técnica de apostas duplas (uma segura e uma arriscada)</li>
-                        <li>Defina um orçamento específico para o jogo e não ultrapasse</li>
-                        <li>Acompanhe os multiplicadores das últimas rodadas para identificar tendências</li>
-                        <li>Aproveite o bônus de 100% para aumentar seu capital inicial de jogo</li>
-                    </ul>
-                `;
-            }
+            // Limpar e adicionar recomendações
+            const recommendationsList = document.getElementById('recommendations');
+            recommendationsList.innerHTML = '';
             
-            // Update the result section
-            document.getElementById('profileType').textContent = profileType;
-            document.getElementById('profileCharacteristics').innerHTML = characteristics;
-            document.getElementById('profileRecommendations').innerHTML = recommendations;
+            perfil.recomendacoes.forEach(recomendacao => {
+                const li = document.createElement('li');
+                li.textContent = recomendacao;
+                recommendationsList.appendChild(li);
+            });
             
-            // Show the result section
+            // Mostrar seção de resultado
             document.getElementById('profileResult').style.display = 'block';
             
-            // Scroll to results
+            // Scroll para os resultados
             document.getElementById('profileResult').scrollIntoView({ behavior: 'smooth' });
         });
         
-        // Make the logo clickable to return home
-        document.addEventListener('DOMContentLoaded', function() {
-            const logo = document.querySelector('.logo-image');
-            if (logo) {
-                logo.addEventListener('click', function() {
-                    showSection('home');
-                });
+        function determinarPerfil(tempoJogo, valorAposta, saqueReinveste, momentoParada, usaEstrategia) {
+            // Sistema de pontuação para determinar o perfil
+            let pontuacaoImpulsivo = 0;
+            let pontuacaoEstrategico = 0;
+            let pontuacaoCasual = 0;
+            
+            // Tempo de jogo
+            if (tempoJogo === 'muito') pontuacaoImpulsivo += 2;
+            if (tempoJogo === 'medio') pontuacaoEstrategico += 2;
+            if (tempoJogo === 'pouco') pontuacaoCasual += 2;
+            
+            // Valor da aposta
+            if (valorAposta === 'alto') pontuacaoImpulsivo += 2;
+            if (valorAposta === 'medio') pontuacaoEstrategico += 1;
+            if (valorAposta === 'baixo') pontuacaoCasual += 2;
+            
+            // Saque ou reinvestimento
+            if (saqueReinveste === 'reinveste') pontuacaoImpulsivo += 2;
+            if (saqueReinveste === 'misto') pontuacaoEstrategico += 2;
+            if (saqueReinveste === 'saca') {
+                pontuacaoEstrategico += 1;
+                pontuacaoCasual += 1;
             }
+            
+            // Momento de parada
+            if (momentoParada === 'nunca') pontuacaoImpulsivo += 3;
+            if (momentoParada === 'lucro') pontuacaoEstrategico += 3;
+            if (momentoParada === 'tempo') pontuacaoCasual += 2;
+            
+            // Uso de estratégia
+            if (usaEstrategia === 'nunca') {
+                pontuacaoImpulsivo += 1;
+                pontuacaoCasual += 1;
+            }
+            if (usaEstrategia === 'vezes') pontuacaoCasual += 2;
+            if (usaEstrategia === 'sempre') pontuacaoEstrategico += 3;
+            
+            // Determinar o perfil predominante
+            let perfilPredominante;
+            let maiorPontuacao = Math.max(pontuacaoImpulsivo, pontuacaoEstrategico, pontuacaoCasual);
+            
+            if (maiorPontuacao === pontuacaoImpulsivo) {
+                perfilPredominante = {
+                    tipo: "Jogador Impulsivo",
+                    descricao: "Você tende a tomar decisões rápidas e emocionais durante o jogo. Costuma apostar valores mais altos e passar mais tempo jogando, muitas vezes sem um critério claro para parar.",
+                    recomendacoes: [
+                        "Estabeleça limites claros antes de começar a jogar",
+                        "Defina metas diárias de lucro e perda e respeite-as",
+                        "Faça pequenas pausas entre as sessões de jogo",
+                        "Considere sacar parte dos seus ganhos regularmente",
+                        "Experimente adotar uma estratégia simples para disciplinar suas apostas"
+                    ]
+                };
+            } else if (maiorPontuacao === pontuacaoEstrategico) {
+                perfilPredominante = {
+                    tipo: "Jogador Estratégico",
+                    descricao: "Você joga de forma calculada e metódica. Costuma usar estratégias definidas, estabelece metas de lucro e gerencia bem seu bankroll.",
+                    recomendacoes: [
+                        "Continue aprimorando suas estratégias com base nos resultados",
+                        "Mantenha um registro dos seus resultados para análise",
+                        "Varie suas estratégias conforme as tendências do jogo",
+                        "Não se apegue excessivamente a uma única abordagem",
+                        "Faça pequenos testes com novas estratégias usando valores baixos"
+                    ]
+                };
+            } else {
+                perfilPredominante = {
+                    tipo: "Jogador Casual",
+                    descricao: "Você joga principalmente por diversão, sem a pressão de grandes ganhos. Tende a fazer apostas menores e ter sessões de jogo mais curtas.",
+                    recomendacoes: [
+                        "Considere usar uma estratégia simples para melhorar seus ganhos",
+                        "Estabeleça um orçamento específico para o jogo",
+                        "Aprenda técnicas básicas de gerenciamento de banca",
+                        "Mantenha o foco no aspecto de entretenimento do jogo",
+                        "Experimente diferentes multiplicadores para sacar suas apostas"
+                    ]
+                };
+            }
+            
+            return perfilPredominante;
+        }
+        
+        // Permitir upload de logo (simulado)
+        function setupLogoUpload() {
+            // Esta é uma simulação - em um ambiente real, seria necessário implementar
+            // o upload real de arquivos e armazenamento
+            const logoContainer = document.querySelector('.logo-container');
+            
+            // Adicionar evento de clique no container da logo
+            logoContainer.addEventListener('click', function() {
+                // Criar input de arquivo invisível
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.style.display = 'none';
+                
+                // Adicionar evento de mudança
+                fileInput.addEventListener('change', function() {
+                    if (fileInput.files && fileInput.files[0]) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            // Verificar se já existe um elemento de imagem
+                            const existingLogo = document.querySelector('.logo-img');
+                            
+                            if (existingLogo) {
+                                // Atualizar a imagem existente
+                                existingLogo.src = e.target.result;
+                            } else {
+                                // Criar um novo elemento de imagem
+                                const logoImg = document.createElement('img');
+                                logoImg.classList.add('logo-img');
+                                logoImg.src = e.target.result;
+                                logoImg.alt = 'AVIATOR BET MASTER Logo';
+                                logoImg.style.maxWidth = '80%';
+                                logoImg.style.marginBottom = '10px';
+                                
+                                // Adicionar antes do texto do logo
+                                const logoText = document.querySelector('.logo-text');
+                                logoContainer.insertBefore(logoImg, logoText);
+                            }
+                            
+                            // Mostrar mensagem de sucesso
+                            alert('Logo enviado com sucesso!');
+                        };
+                        
+                        reader.readAsDataURL(fileInput.files[0]);
+                    }
+                });
+                
+                // Simular clique para abrir o seletor de arquivos
+                document.body.appendChild(fileInput);
+                fileInput.click();
+                document.body.removeChild(fileInput);
+            });
+            
+            // Adicionar dica visual de que é clicável
+            logoContainer.title = "Clique para alterar o logo";
+            logoContainer.style.cursor = "pointer";
+        }
+        
+        // Inicializar o upload de logo (simulado)
+        window.addEventListener('DOMContentLoaded', function() {
+            setupLogoUpload();
         });
     </script>
 </body>
